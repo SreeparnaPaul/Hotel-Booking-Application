@@ -5,6 +5,7 @@ const authRoute= require("./routes/auth.js")
 const usersRoute= require("./routes/users.js")
 const hotelsRoute= require("./routes/hotels.js")
 const roomsRoute= require("./routes/rooms.js")
+const cookieParser= require("cookie-parser")
 require('./database/connection.js')
 const app = express()
 
@@ -14,7 +15,7 @@ app.get("/users",(req,res)=>{
 })
 
 //middlewares
-
+app.use(cookieParser())
 app.use(express.json())
 
 app.use("/api/auth",authRoute)
