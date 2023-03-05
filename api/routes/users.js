@@ -1,27 +1,35 @@
 const express = require("express");
 const router = express.Router();
-const { createUser,getAllUser,getUser,updatedUser,deleteUser } = require("../controller/user");
-const verifyToken = require("../utils/verifyToken")
+const {getUsers,getUser,updateUser,deleteUser } = require("../controller/user");
+const verifyAdmin = require("../utils/verifyToken");
+const verifyUser = require("../utils/verifyToken");
+const verifyToken = require("../utils/verifyToken");
 
-router.get("/checkauthentication",verifyToken,(req,res,next)=>{
-    res.send("Hello user, you are logged in")
-})
 
-//Create
-router.post("/",createUser)
+// router.get("/checkauthentication", verifyToken, (req,res,next)=>{
+//   res.send("hello user, you are logged in")
+// })
 
-//Update
-router.put("/:id",updatedUser)
+// router.get("/checkuser/:id", verifyUser, (req,res,next)=>{
+//   res.send("hello user, you are logged in and you can delete your account")
+// })
 
-//Delete
-router.delete("/:id",deleteUser)
+// router.get("/checkadmin/:id", verifyAdmin, (req,res,next)=>{
+//   res.send("hello admin, you are logged in and you can delete all accounts")
+// })
 
-//Get
+//UPDATE
+router.put("/:id", verifyUser, updateUser);
 
-router.get("/:id",getUser)
+//DELETE
+router.delete("/:id", verifyUser, deleteUser);
 
-//Get All
-router.get("/",getAllUser)
+//GET
+router.get("/:id", verifyUser, getUser);
+
+//GET ALL
+router.get("/", verifyAdmin, getUsers);
+
 
 
 

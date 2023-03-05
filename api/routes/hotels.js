@@ -1,15 +1,16 @@
 const express = require("express");
 const { createHotel,getAllHotel,getHotel,updatedHotel,deleteHotel } = require("../controller/hotel");
+const verifyAdmin = require("../utils/verifyToken");
 const router = express.Router();
 
 //Create
-router.post("/",createHotel)
+router.post("/",verifyAdmin,createHotel)
 
 //Update
-router.put("/:id",updatedHotel)
+router.put("/:id",verifyAdmin,updatedHotel)
 
 //Delete
-router.delete("/:id",deleteHotel)
+router.delete("/:id",verifyAdmin ,deleteHotel)
 
 //Get
 
