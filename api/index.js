@@ -6,6 +6,7 @@ const usersRoute= require("./routes/users.js")
 const hotelsRoute= require("./routes/hotels.js")
 const roomsRoute= require("./routes/rooms.js")
 const cookieParser= require("cookie-parser")
+const cors = require("cors")
 require('./database/connection.js')
 const app = express()
 
@@ -16,6 +17,7 @@ dotenv.config()
 
 //middlewares
 app.use(cookieParser())
+app.use(cors())
 app.use(express.json())
 
 app.use("/api/auth",authRoute)
