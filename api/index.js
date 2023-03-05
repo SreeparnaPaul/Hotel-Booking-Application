@@ -10,9 +10,9 @@ require('./database/connection.js')
 const app = express()
 
 dotenv.config()
-app.get("/users",(req,res)=>{
-    res.send("hello first request!")
-})
+// app.get("/users",(req,res)=>{
+//     res.send("hello first request!")
+// })
 
 //middlewares
 app.use(cookieParser())
