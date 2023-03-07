@@ -1,7 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Hotel from "../../pages/hotel/Hotel";
 import "./searchItem.css";
 
 const SearchItem = ({item}) => {
+  const navigate=useNavigate()
   console.log({item})
   return (
     <div className="searchItem">
@@ -33,8 +35,11 @@ const SearchItem = ({item}) => {
         <div className="siDetailTexts">
           <span className="siPrice">Rs.{item?.cheapestPrice}</span>
           <span className="siTaxOp">Includes taxes and fees</span>
-          <Link to={`http://localhost:8800/api/hotels/find/${item._id}`}>
-          <button className="siCheckButton">See availability</button>
+          <Link to={`http://localhost:8800/api/hotels/${item?._id}`}>
+          <button className="siCheckButton" onClick={(e)=>{
+            e.preventDefault()
+            navigate(`/hotels/${item?._id}`)
+          }}>See availability</button>
           </Link>
         </div>
       </div>

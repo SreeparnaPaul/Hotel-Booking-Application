@@ -14,7 +14,7 @@ router.delete("/:id",verifyAdmin ,deleteHotel)
 
 //Get
 
-router.get("/find/:id",getHotel)
+router.get("/:id",getHotel)
 
 //Get All
 router.get("/",getAllHotel)
