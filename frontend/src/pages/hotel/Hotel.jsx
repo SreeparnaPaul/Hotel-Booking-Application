@@ -14,6 +14,7 @@ import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import { SearchContext } from "../../context/SearchContext";
+import { useContext } from "react";
 
 const Hotel = () => {
   const location= useLocation()
